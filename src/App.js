@@ -1,33 +1,21 @@
 import React,{Component} from 'react';
 import './App.css';
-import Persons from './Persons/Persons';
+import UsersList from './UsersList/UsersList';
 
 class App extends Component {
   state = {
-    newPersonObj : {
+    newUserObj : {
     username: '',
     charge: 0,
     },
-    persons : [
-      {
-      username: 'Meet',
-      charge: 0
-      },
-      {
-        username: 'Neel',
-        charge: 0
-      },
-      {
-        username: 'Sandeep',
-        charge: 0
-      }
+    users : [
     ],
     totalAmount: 0
   }
 
     handleChange = (e) => {
       this.setState({
-        newPersonObj : {
+        newUserObj : {
         username: e.target.value,
         charge: 0
 
@@ -35,26 +23,30 @@ class App extends Component {
       })
     }
       onSubmit = () => {
-        console.log(this.state.persons);
-        this.state.persons.push(this.state.newPersonObj);
-        let ps = this.state.persons;
+        console.log(this.state.users);
+        this.state.users.push(this.state.newUserObj);
+        let us = this.state.users;
         this.setState({
-          persons: ps
+          users: us
               })
         
       }
 
   render(){
+    const { name } = this.props.location;
     return (
     <div className="App">
-        <input type="text"   
-          onChange={e => this.handleChange(e)}/>
-        
-        <button onClick={this.onSubmit}>Click</button>
+        <h1>Hey {name}!</h1>
+        <form>
+          <input type="text"   
+            onChange={e => this.handleChange(e)}/>
+          
+          <input className = "listButton" type="reset" value="Add to List" onClick={this.onSubmit}/>
+        </form>
         <h3>Total: {this.state.totalAmount}</h3>
-        {this.state.persons.map((person) => {
-          console.log(person);
-          return <Persons name={person.username} charge = {person.charge}/>
+        {this.state.users.map((user) => {
+          console.log(user);
+          return <UsersList name={user.username} charge = {user.charge}/>
         })}
     </div>
   );

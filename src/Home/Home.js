@@ -1,0 +1,35 @@
+import React, {Component} from 'react';
+import './Home.css';
+import {Link} from 'react-router-dom';
+class Home extends Component{
+
+    state = {
+        name: ''
+    }
+
+    changeHandler = (e) => {
+        this.setState({
+            name: e.target.value
+        })
+        console.log(this.state.name);
+    };
+
+    render(){
+        return (
+            <div className="username">
+                <input type="text" onChange={(e) => this.changeHandler(e)}/>
+                <Link
+                    to={{
+                        pathname: "/users",
+                        name: this.state.name  // your data array of objects
+                    }}
+                > 
+                <button> Send my name </button>
+                </Link>
+              
+            </div>
+        )
+    }
+}
+
+export default Home;

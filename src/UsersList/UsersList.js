@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './Persons.css';
-class Persons extends Component {
+import './UsersList.css';
+class UsersList extends Component {
     state = {
         amount: 0
     }
     render(){
     return(
-        <div className="Persons">
+        <div className="UsersList">
             <h1>{this.props.name}</h1>
             <button >+</button>
             <button>-</button>
@@ -17,4 +17,4 @@ class Persons extends Component {
     }
 }
 
-export default Persons;
+export default UsersList;

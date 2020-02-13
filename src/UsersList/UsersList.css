@@ -1,0 +1,20 @@
+.UsersList{
+    background:linear-gradient(rgb(122, 241, 148),rgb(134, 209, 132));
+    border: 2px solid black;
+    margin: 5% auto;
+    width: 50%;
+    padding: 2%;
+}
+.UsersList h1{
+    
+    color: rgb(6, 45, 46);
+}
+
+.UsersList button {
+     background: none;
+     padding: 10px;
+     margin: 5px;
+     background-color: rgb(29, 160, 165);
+     border: 2px solid rgb(12, 60, 61);
+     
+}

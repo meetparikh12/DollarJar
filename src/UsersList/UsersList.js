@@ -8,8 +8,8 @@ class UsersList extends Component {
     return(
         <div className="UsersList">
             <h1>{this.props.name}</h1>
-            <button >+</button>
-            <button>-</button>
+            <button onClick={this.props.add}>+</button>
+            <button onClick={this.props.sub}>-</button>
             <p>Amount : {this.props.charge}</p>
         </div>
     )

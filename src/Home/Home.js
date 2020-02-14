@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom';
 class Home extends Component{
 
     state = {
-        name: ''
+        name: 'Meet'
     }
 
-    changeHandler = (e) => {
+    changeHandler = function (e) {
         this.setState({
             name: e.target.value
         })
@@ -17,14 +17,14 @@ class Home extends Component{
     render(){
         return (
             <div className="username">
-                <input type="text" onChange={(e) => this.changeHandler(e)}/>
+                <input type="text" value={this.state.name} onChange={this.changeHandler.bind(this)}/>
                 <Link
                     to={{
                         pathname: "/users",
                         name: this.state.name  // your data array of objects
                     }}
                 > 
-                <button> Send my name </button>
+                <button> Send name </button>
                 </Link>
               
             </div>

@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
+import {Link} from 'react-router-dom';
+
 import UsersList from './UsersList/UsersList';
 
 class App extends Component {
@@ -12,7 +14,7 @@ class App extends Component {
     users : [],
     indexCount: 0,
     totalAmount: 0,
-    extraCharge: 10
+    extraCharge: 10,
   }
     handleChange = (e) => {
       this.setState({
@@ -25,25 +27,18 @@ class App extends Component {
       })
     }
       onSubmit = () => {
+        if(this.state.newUserObj.username != ""){
         console.log(this.state.users);
         this.state.users.push(this.state.newUserObj);
         let us = this.state.users;
         this.setState({
           users: us,
           indexCount: this.state.indexCount + 1
-        })
-        
-      }
-
-      addHandler = (index) => {
-        let userIndex = 0;
-        for(let i=0; i<this.state.users.length; i++){
-          if(this.state.users[i].id===index){
-            userIndex = i;
-            break;
-          }
+        }) 
         }
-
+      }
+     
+        addHandler = (userIndex) => {
         const userTemp = {...this.state.users[userIndex]};
         userTemp.charge = userTemp.charge + this.state.extraCharge;
         this.addReflect(this.state.extraCharge);
@@ -54,15 +49,8 @@ class App extends Component {
         })
       }
 
-      subHandler = (index) => {
-        let userIndex = 0;
-        for (let i = 0; i < this.state.users.length; i++) {
-          if (this.state.users[i].id === index) {
-            userIndex = i;
-            break;
-          }
-        }
-
+      subHandler = (userIndex) => {
+      
         const userTemp = {
           ...this.state.users[userIndex]
         };
@@ -92,22 +80,41 @@ class App extends Component {
         })
       }
 
-
+      changePenalty = (e) => {
+        this.setState({
+          extraCharge: parseInt(e.target.value)
+        })
+      }
+  
   render(){
+    
     const { name } = this.props.location;
     return (
+   
     <div className="App">
+        
         <h1>Hey {name}!</h1>
+    
+        <label>
+        Enter amount:
+        <br></br>
+        <input type="text" onChange={(e) => this.changePenalty(e)}/>
+        </label>
+     
         <form>
           <input type="text"   
             onChange={e => this.handleChange(e)}/>
-          <input required className = "listButton" type="reset" value="Add to List" onClick={this.onSubmit}/>
+          <input className = "listButton"  value="Add to List" onClick={this.onSubmit} type="reset"/>
         </form>
+       
         <h3>Total: {this.state.totalAmount}</h3>
+      
         {this.state.users.map((user,index) => {
           console.log(user);
-          return <UsersList name={user.username} add = {() => this.addHandler(index)} sub={() => this.subHandler(index)} charge = {user.charge}
+
+        return <UsersList name={user.username} add = {this.addHandler.bind(this,index)} sub={this.subHandler.bind(this,index)} charge = {user.charge}
             clicked={this.clickHandler}
+
           />
         })}
     </div>

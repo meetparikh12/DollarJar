@@ -1,0 +1,26 @@
+.Users {
+    text-align: center;
+}
+
+.Users h1 {
+    color: rgb(29, 69, 82);
+}
+
+.Users .listButton {
+    background: none;
+    padding: 7px;
+    margin: 10px;
+    background-color: rgb(162, 152, 206);
+    border: 2px solid rgb(80, 58, 105);
+    border-radius: 5px;
+    color: white;
+}
+
+.Users div {
+    border: 2px solid rgb(49, 134, 106);
+    text-align: center;
+    background-color: rgb(96, 235, 209);
+    margin: 3% auto;
+    width: 50%;
+    padding: 2%;
+}

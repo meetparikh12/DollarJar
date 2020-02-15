@@ -16,6 +16,7 @@ class Home extends Component{
 
     render(){
         return (
+            
             <div className="username">
                 <input type="text" value={this.state.name} onChange={this.changeHandler.bind(this)}/>
                 <Link

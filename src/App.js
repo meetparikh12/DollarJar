@@ -39,10 +39,7 @@ class App extends Component {
         users: userArray,
         indexCount: this.state.indexCount + 1
       })
-      
-      
       }
-
     }
     
     addPenalty = (userIndex) => {
@@ -99,11 +96,6 @@ class App extends Component {
         }
       }
     
-      
-
-      
-    
-  
     render(){
       
       const { name } = this.props.location;
@@ -131,8 +123,8 @@ class App extends Component {
           {this.state.users.map((user,index) => {
             console.log(user);
 
-          return <UsersList name={user.username} add = {this.addPenalty.bind(this,index)} sub={this.subPenalty.bind(this,index)} charge = {user.charge}
-              clicked={this.clickHandler}
+          return <UsersList name={user.username} add = {this.addPenalty.bind(this,index)} 
+          sub={this.subPenalty.bind(this,index)} charge = {user.charge}
 
             />
           })}

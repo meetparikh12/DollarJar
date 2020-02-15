@@ -4,28 +4,30 @@ import {Link} from 'react-router-dom';
 class Home extends Component{
 
     state = {
-        name: 'Meet'
+        name: '',
+        toggle: false
     }
 
     changeHandler = function (e) {
-        this.setState({
-            name: e.target.value
+         this.setState({
+            name: e.target.value,
         })
-        console.log(this.state.name);
+    
     };
 
     render(){
         return (
             
             <div className="username">
-                <input type="text" value={this.state.name} onChange={this.changeHandler.bind(this)}/>
+                <input type="text" placeholder = "Enter name" 
+                value={this.state.name} onChange={this.changeHandler.bind(this)}/>
                 <Link
                     to={{
                         pathname: "/users",
                         name: this.state.name  // your data array of objects
                     }}
                 > 
-                <button> Send name </button>
+                <button disabled={!this.state.name}> Send name </button>
                 </Link>
               
             </div>
